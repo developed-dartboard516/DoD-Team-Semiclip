@@ -1,6 +1,6 @@
 [submodule "semiclip_mm_src/hlsdk"]
-	path  = semiclip_mm_src/hlsdk
-	url   = https://github.com/alliedmodders/hlsdk.git
+	path = semiclip_mm_src/hlsdk
+	url = https://github.com/alliedmodders/hlsdk.git
 [submodule "semiclip_mm_src/metamod-hl1"]
-	path  = semiclip_mm_src/metamod-hl1
-	url   = https://github.com/alliedmodders/metamod-hl1.git
+	path = semiclip_mm_src/metamod-hl1
+	url = https://github.com/alliedmodders/metamod-hl1.git
