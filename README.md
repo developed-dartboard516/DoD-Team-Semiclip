@@ -4,4 +4,4 @@ Day of Defeat — A *Meta Mod* Team Semiclip
 * Based on [ReSemiclip](https://github.com/rehlds/resemiclip) by [s1lentq](https://github.com/s1lentq) and [ReHLDS Team](https://github.com/rehlds) — GitHub.
 * Might work on other HL1-based games too.
 * Works on `steam_legacy` and `beta`.
-* You can see it or read more details about it @ [AlliedModders](https://forums.alliedmods.net/showthread.php?t=352371)
+* You can see it or read more details about it @ [AlliedModders](https://forums.alliedmods.net/showthread.php?t=352371).
