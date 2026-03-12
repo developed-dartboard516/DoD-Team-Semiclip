@@ -20,7 +20,7 @@
 #endif
 
 #define SEMICLIP_VERSION        "2.2+"
-#define SEMICLIP_VERSION_MS     2,2,0,0
+#define SEMICLIP_VERSION_MS     2,2,0,1
 #define SEMICLIP_AUTHOR         "s1lent & claudiuhks"
 #define SEMICLIP_TITLE          "Team Semiclip"
 #define SEMICLIP_TITLE_MS       "MetaMod " SEMICLIP_TITLE
@@ -31,7 +31,7 @@
 #define SEMICLIP_TAG            "SEMICLIP"
 #define SEMICLIP_VERSION_FULL   SEMICLIP_VERSION " (" SEMICLIP_AUTHOR ")"
 
-#define F_EToI(E) ((int)            (E - ::g_pEntities))
+#define F_EToI(E) ((::size_t)       (E - ::g_pEntities))
 #define F_IToE(I) ((::edict_s *)    (::g_pEntities + I))
 
 typedef struct patch_s {
@@ -98,12 +98,12 @@ extern bool g_isEnabled;
 extern unsigned char g_Type;
 extern bool g_onHead;
 extern unsigned char g_teamType;
-extern unsigned g_teamOffsNum;
+extern ::size_t g_teamOffsNum;
 extern bool g_doPatch;
 extern bool g_doSolid;
 extern unsigned char g_dyingType;
 extern unsigned char g_obsType;
-extern unsigned g_obsOffsNum;
+extern ::size_t g_obsOffsNum;
 extern void* g_pPatchAddr;
 extern float g_execTime;
 

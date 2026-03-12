@@ -49,11 +49,11 @@ bool g_isEnabled = false;
 unsigned char g_Type = false;
 bool g_onHead = false;
 unsigned char g_teamType = false;
-unsigned g_teamOffsNum = false;
+::size_t g_teamOffsNum = false;
 bool g_doPatch = false;
 unsigned char g_dyingType = false;
 unsigned char g_obsType = false;
-unsigned g_obsOffsNum = false;
+::size_t g_obsOffsNum = false;
 void* g_pPatchAddr = NULL;
 float g_execTime = 0.f;
 
@@ -129,7 +129,7 @@ C_DLLEXPORT void WINAPI GiveFnptrsToDll(::enginefuncs_s* pEngineFuncs, ::globalv
     auto pLib = ::dlopen(memInfo.dli_fname, RTLD_LAZY | RTLD_NOLOAD | RTLD_NODELETE);
     if (!pLib)
         pLib = ::dlopen(memInfo.dli_fname, RTLD_NOW);
-    const unsigned char* pAddr = (const unsigned char*) ::dlsymComplex(pLib, SV_ClipToLinks);
+    auto pAddr = (const unsigned char*) ::dlsymComplex(pLib, SV_ClipToLinks);
     ::dlclose(pLib);
     if (!pAddr)
     {
@@ -138,7 +138,7 @@ C_DLLEXPORT void WINAPI GiveFnptrsToDll(::enginefuncs_s* pEngineFuncs, ::globalv
         ::SourceHook::CVector < unsigned char > Vectorized;
         ::SourceHook::String Signature = SV_ClipToLinks_Sig;
         ::vectorizeSignature(Signature, Vectorized);
-        unsigned Addr;
+        ::size_t Addr;
         if (::findInMemory(memInfo.dli_fbase, memData.st_size, Vectorized, &Addr, true))
             pAddr = (const unsigned char*)Addr;
     }
@@ -146,7 +146,7 @@ C_DLLEXPORT void WINAPI GiveFnptrsToDll(::enginefuncs_s* pEngineFuncs, ::globalv
     ::_MEMORY_BASIC_INFORMATION memInfo;
     ::VirtualQuery(pGlobalVars, &memInfo, sizeof memInfo);
     auto pDosHdr = (::_IMAGE_DOS_HEADER*)memInfo.AllocationBase;
-    auto pNtHdr = (::_IMAGE_NT_HEADERS*)((unsigned)pDosHdr + (unsigned)pDosHdr->e_lfanew);
+    auto pNtHdr = (::_IMAGE_NT_HEADERS*)((::size_t)pDosHdr + (::size_t)pDosHdr->e_lfanew);
     auto pAddr = ::findStrPush((const unsigned char*)pDosHdr, pNtHdr->OptionalHeader.SizeOfImage, (const unsigned char*)SV_ClipToLinks, sizeof SV_ClipToLinks);
 #endif
     if (!pAddr)
@@ -235,7 +235,8 @@ bool canPass_Move(::playermove_s* pMove, int Host, int Player)
 
 bool validObsTarget(::edict_s* pPlayer)
 {
-    static unsigned Idx;
+    static int Idx;
+    static ::size_t uIdx;
     switch (::g_obsType)
     {
     case 1:
@@ -260,23 +261,23 @@ bool validObsTarget(::edict_s* pPlayer)
     }
     case 5:
     {
-        Idx = unsigned(pPlayer->v.euser1);
-        return Idx > 0 && Idx != unsigned(pPlayer);
+        uIdx = (::size_t)pPlayer->v.euser1;
+        return uIdx > 0 && uIdx != (::size_t)pPlayer;
     }
     case 6:
     {
-        Idx = unsigned(pPlayer->v.euser2);
-        return Idx > 0 && Idx != unsigned(pPlayer);
+        uIdx = (::size_t)pPlayer->v.euser2;
+        return uIdx > 0 && uIdx != (::size_t)pPlayer;
     }
     case 7:
     {
-        Idx = unsigned(pPlayer->v.euser3);
-        return Idx > 0 && Idx != unsigned(pPlayer);
+        uIdx = (::size_t)pPlayer->v.euser3;
+        return uIdx > 0 && uIdx != (::size_t)pPlayer;
     }
     case 8:
     {
-        Idx = unsigned(pPlayer->v.euser4);
-        return Idx > 0 && Idx != unsigned(pPlayer);
+        uIdx = (::size_t)pPlayer->v.euser4;
+        return uIdx > 0 && uIdx != (::size_t)pPlayer;
     }
     case 9:
     {
@@ -285,8 +286,8 @@ bool validObsTarget(::edict_s* pPlayer)
     }
     case 10:
     {
-        Idx = *(unsigned char*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
-        return Idx > 0 && Idx != F_EToI(pPlayer);
+        uIdx = *(unsigned char*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
+        return uIdx > 0 && uIdx != F_EToI(pPlayer);
     }
     case 11:
     {
@@ -295,8 +296,8 @@ bool validObsTarget(::edict_s* pPlayer)
     }
     case 12:
     {
-        Idx = *(unsigned short*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
-        return Idx > 0 && Idx != F_EToI(pPlayer);
+        uIdx = *(unsigned short*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
+        return uIdx > 0 && uIdx != F_EToI(pPlayer);
     }
     case 13:
     {
@@ -305,22 +306,22 @@ bool validObsTarget(::edict_s* pPlayer)
     }
     case 14:
     {
-        Idx = *(unsigned int*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
-        return Idx > 0 && Idx != F_EToI(pPlayer);
+        uIdx = *(::size_t*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
+        return uIdx > 0 && uIdx != F_EToI(pPlayer);
     }
     case 15:
     {
-        Idx = *(unsigned int*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
-        return Idx > 0 && Idx != unsigned(pPlayer);
+        uIdx = *(::size_t*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
+        return uIdx > 0 && uIdx != (::size_t)pPlayer;
     }
     case 16:
     {
-        Idx = *(unsigned int*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
-        return Idx > 0 && Idx != unsigned(pPlayer->pvPrivateData);
+        uIdx = *(::size_t*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
+        return uIdx > 0 && uIdx != (::size_t)pPlayer->pvPrivateData;
     }
     }
-    Idx = *(unsigned int*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
-    return Idx > 0 && Idx != unsigned(&pPlayer->v);
+    uIdx = *(::size_t*)(((unsigned char*)(pPlayer->pvPrivateData)) + ::g_obsOffsNum);
+    return uIdx > 0 && uIdx != (::size_t)&pPlayer->v;
 }
 
 bool canPass_Pack(::edict_s* pHost, ::edict_s* pPlayer)
@@ -494,10 +495,10 @@ void OnClientPutInServer_Post(::edict_s*)
     ::g_Type = (unsigned char) ::g_pStyle->value;
     ::g_onHead = bool(::g_pHead->value);
     ::g_teamType = (unsigned char) ::g_pTeam->value;
-    ::g_teamOffsNum = unsigned(::g_pTeamOffs->value);
+    ::g_teamOffsNum = (::size_t) ::g_pTeamOffs->value;
     ::g_doPatch = bool(::g_pPatch->value);
     ::g_dyingType = (unsigned char) ::g_pDying->value;
-    ::g_obsOffsNum = unsigned(::g_pObsOffs->value);
+    ::g_obsOffsNum = (::size_t) ::g_pObsOffs->value;
     ::g_obsType = (unsigned char) ::g_pObserver->value;
     switch (::g_doPatch)
     {

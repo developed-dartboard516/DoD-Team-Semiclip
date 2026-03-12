@@ -12,6 +12,7 @@
 # apt-get install make -y ; sudo apt-get install patchelf -y".
 #
 # If no access to update the system, type "su" and hit ENTER.
+# Type "exit" and hit ENTER to leave "root" access once updated.
 
 CMD ?= gcc
 OUT ?= semiclip.so
@@ -24,11 +25,14 @@ OUT ?= semiclip.so
 
 # Root paths for external dependencies below.
 #
-# HLSDK_ROOT ?= /mnt/d/scripting/hlsdk-master
-# HL1MM_ROOT ?= /mnt/d/scripting/metamod-hl1-master
-#
+# If specified file/ folder doesn't exist, define non-local paths.
+ifeq ($(wildcard hlsdk),)
+HLSDK_ROOT ?= /mnt/d/scripting/hlsdk-master
+HL1MM_ROOT ?= /mnt/d/scripting/metamod-hl1-master
+else
 HLSDK_ROOT ?= ./hlsdk
 HL1MM_ROOT ?= ./metamod-hl1
+endif
 
 SRC += linux_compat.c
 SRC += semiclip.cpp
@@ -154,15 +158,16 @@ OPT += -Wl,--wrap=__isoc23_strtoull
 default:
 
 	rm -r -f "$(CURDIR)/$(OUT)" "$(CURDIR)/*.so" "$(CURDIR)/*.0" "$(CURDIR)/*.o" "$(CURDIR)/*.log" "$(CURDIR)/Linux-Release" "$(CURDIR)/Linux-Release-AVX2"
+	rm -f    "$(CURDIR)/$(OUT)" "$(CURDIR)/*.so" "$(CURDIR)/*.0" "$(CURDIR)/*.o" "$(CURDIR)/*.log"
 
 ifneq ($(OFL),)
 	cp $(OFL) "$(CURDIR)"
 endif
 
 ifneq ($(LIB),)
-	mkdir "$(CURDIR)/Linux-Release"      & $(CMD) $(SRC) $(LIB) $(DEF) $(HDR) $(OPT)        -o "$(CURDIR)/Linux-Release/$(OUT)"
-	mkdir "$(CURDIR)/Linux-Release-AVX2" & $(CMD) $(SRC) $(LIB) $(DEF) $(HDR) $(OPT) -mavx2 -o "$(CURDIR)/Linux-Release-AVX2/$(OUT)"
+	mkdir "$(CURDIR)/Linux-Release"      ; $(CMD) $(SRC) $(LIB) $(DEF) $(HDR) $(OPT)        -o "$(CURDIR)/Linux-Release/$(OUT)"
+	mkdir "$(CURDIR)/Linux-Release-AVX2" ; $(CMD) $(SRC) $(LIB) $(DEF) $(HDR) $(OPT) -mavx2 -o "$(CURDIR)/Linux-Release-AVX2/$(OUT)"
 else
-	mkdir "$(CURDIR)/Linux-Release"      & $(CMD) $(SRC)        $(DEF) $(HDR) $(OPT)        -o "$(CURDIR)/Linux-Release/$(OUT)"
-	mkdir "$(CURDIR)/Linux-Release-AVX2" & $(CMD) $(SRC)        $(DEF) $(HDR) $(OPT) -mavx2 -o "$(CURDIR)/Linux-Release-AVX2/$(OUT)"
+	mkdir "$(CURDIR)/Linux-Release"      ; $(CMD) $(SRC)        $(DEF) $(HDR) $(OPT)        -o "$(CURDIR)/Linux-Release/$(OUT)"
+	mkdir "$(CURDIR)/Linux-Release-AVX2" ; $(CMD) $(SRC)        $(DEF) $(HDR) $(OPT) -mavx2 -o "$(CURDIR)/Linux-Release-AVX2/$(OUT)"
 endif

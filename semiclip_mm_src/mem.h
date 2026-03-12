@@ -12,14 +12,15 @@
 #include <sys/mman.h>
 #endif
 
-void memCpy(void*, const void*, unsigned);
-const unsigned char* memCmp(const unsigned char*, unsigned, int, unsigned);
+void allowFullMemAccess(void*, ::size_t);
+void memCpy(void*, const void*, ::size_t);
+const unsigned char* memCmp(const unsigned char*, ::size_t, int, ::size_t);
 
 #ifndef __linux__
 bool memCmpChr(const unsigned char*, const unsigned char*, const unsigned char*);
-const unsigned char* memFindRefChr(const unsigned char*, const unsigned char*, unsigned char, unsigned, unsigned);
-const unsigned char* findPattern(const unsigned char*, unsigned, const unsigned char*, unsigned);
-const unsigned char* findStrPush(const unsigned char*, unsigned, const unsigned char*, unsigned);
+const unsigned char* memFindRefChr(const unsigned char*, const unsigned char*, unsigned char, ::size_t, ::size_t);
+const unsigned char* findPattern(const unsigned char*, ::size_t, const unsigned char*, ::size_t);
+const unsigned char* findStrPush(const unsigned char*, ::size_t, const unsigned char*, ::size_t);
 #else
 void* dlsymComplex(void*, const char*);
 #endif

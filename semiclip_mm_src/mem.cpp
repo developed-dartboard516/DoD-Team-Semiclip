@@ -1,23 +1,30 @@
 
 #include "mem.h"
 
-void memCpy(void* pAddr, const void* pMem, unsigned Size)
+void allowFullMemAccess ( void * pAddr, ::size_t Size )
 {
 #ifndef __linux__
-    unsigned long oldPro, Pro;
-    ::VirtualProtect(pAddr, Size, PAGE_EXECUTE_READWRITE, &oldPro);
-    ::memcpy(pAddr, pMem, Size);
-    ::VirtualProtect(pAddr, Size, oldPro, &Pro);
+    static unsigned long Access;
+    ::VirtualProtect ( pAddr, Size, PAGE_EXECUTE_READWRITE, &Access );
 #else
-    auto pageSize = ::sysconf(_SC_PAGESIZE);
-    auto alignedAddr = (unsigned)pAddr & ~(pageSize - 1);
-    ::mprotect(alignedAddr, pageSize, PROT_READ | PROT_WRITE | PROT_EXEC);
-    ::memcpy(pAddr, pMem, Size);
-    ::mprotect(alignedAddr, pageSize, PROT_READ | PROT_EXEC);
+    static long Page;
+    static ::size_t Addr, Begin, End;
+
+    Addr = ( ::size_t ) pAddr;
+    Page = ::sysconf ( _SC_PAGESIZE ) - true;
+    Begin = Addr & ~Page; /// Would turn '0xABC777AB' into '0xABC77000'.
+    End = ( Addr + Size + Page ) & ~Page; /// Would turn '0xABC777AB' into '0xABC78000', '0xABC79000', ...
+    ::mprotect ( Begin, End - Begin /** 0x1000(4096), 0x2000(8192), ... */, PROT_READ | PROT_WRITE | PROT_EXEC );
 #endif
 }
 
-const unsigned char* memCmp(const unsigned char* pPos, unsigned Range, int Ref, unsigned Pos)
+void memCpy(void* pAddr, const void* pMem, ::size_t Size)
+{
+    ::allowFullMemAccess(pAddr, Size);
+    ::memcpy(pAddr, pMem, Size);
+}
+
+const unsigned char* memCmp(const unsigned char* pPos, ::size_t Range, int Ref, ::size_t Pos)
 {
     auto pEnd = pPos + Range;
     for (; pPos < pEnd; ++pPos)
@@ -38,7 +45,7 @@ bool memCmpChr(const unsigned char* pAddr, const unsigned char* pPattern, const 
     return true;
 }
 
-const unsigned char* memFindRefChr(const unsigned char* pPos, const unsigned char* pEnd, unsigned char Code, unsigned Ref, unsigned Pos)
+const unsigned char* memFindRefChr(const unsigned char* pPos, const unsigned char* pEnd, unsigned char Code, ::size_t Ref, ::size_t Pos)
 {
     for (; pPos < pEnd; ++pPos)
         if (*pPos == Code && *(unsigned*)(pPos + Pos) == Ref)
@@ -46,7 +53,7 @@ const unsigned char* memFindRefChr(const unsigned char* pPos, const unsigned cha
     return NULL;
 }
 
-const unsigned char* findPattern(const unsigned char* pPos, unsigned Range, const unsigned char* pPattern, unsigned Size)
+const unsigned char* findPattern(const unsigned char* pPos, ::size_t Range, const unsigned char* pPattern, ::size_t Size)
 {
     auto pPatternEnd = pPattern + Size;
     for (auto pEnd = pPos + Range - Size; pPos < pEnd; ++pPos)
@@ -55,10 +62,10 @@ const unsigned char* findPattern(const unsigned char* pPos, unsigned Range, cons
     return NULL;
 }
 
-const unsigned char* findStrPush(const unsigned char* pAddr, unsigned Size, const unsigned char* pString, unsigned lenZero)
+const unsigned char* findStrPush(const unsigned char* pAddr, ::size_t Size, const unsigned char* pString, ::size_t lenZero)
 {
     auto pRef = ::findPattern(pAddr, Size, pString, lenZero);
-    return ::memFindRefChr(pAddr, pAddr + Size - 5, (unsigned char)'\x68', (unsigned)pRef, 1);
+    return ::memFindRefChr(pAddr, pAddr + Size - 5, (unsigned char)'\x68', (::size_t)pRef, 1);
 }
 #else
 void* dlsymComplex(void* pLib, const char* pSym)
@@ -69,7 +76,7 @@ void* dlsymComplex(void* pLib, const char* pSym)
     auto pLinkMap = (::link_map*)pLib;
     auto binFile = ::open(pLinkMap->l_name, O_RDONLY);
     auto binSize = ::lseek(binFile, false, SEEK_END);
-    auto pMemMap = ::mmap(nullptr, binSize, PROT_READ, MAP_PRIVATE, binFile, false);
+    auto pMemMap = ::mmap(NULL, binSize, PROT_READ, MAP_PRIVATE, binFile, false);
     ::close(binFile);
     auto pEHdr = (::ElfW(Ehdr)*) pMemMap;
     auto pSHdrs = (::ElfW(Shdr)*) ((char*)pMemMap + pEHdr->e_shoff);

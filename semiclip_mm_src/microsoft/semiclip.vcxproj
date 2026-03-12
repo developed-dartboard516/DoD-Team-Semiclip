@@ -194,7 +194,7 @@
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <Optimization>Full</Optimization>
       <PreprocessorDefinitions>_DEBUG;DEBUG;SUBHOOK_STATIC;HAVE_STDINT_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -213,7 +213,7 @@
       <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -224,7 +224,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FASTCALL_PARAM_ALONE=,void*;FASTCALL_PARAM=void*,;SUBHOOK_STATIC;HAVE_STDINT_H;SEMICLIP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -278,7 +278,7 @@
       </Command>
     </PostBuildEvent>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release.AVX|Win32'">
@@ -289,7 +289,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FASTCALL_PARAM_ALONE=,void*;FASTCALL_PARAM=void*,;SUBHOOK_STATIC;HAVE_STDINT_H;SEMICLIP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -343,7 +343,7 @@
       </Command>
     </PostBuildEvent>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release.AVX2|Win32'">
@@ -354,7 +354,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FASTCALL_PARAM_ALONE=,void*;FASTCALL_PARAM=void*,;SUBHOOK_STATIC;HAVE_STDINT_H;SEMICLIP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -408,7 +408,7 @@
       </Command>
     </PostBuildEvent>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release.WinXP.AVX2|Win32'">
@@ -419,7 +419,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FASTCALL_PARAM_ALONE=,void*;FASTCALL_PARAM=void*,;SUBHOOK_STATIC;HAVE_STDINT_H;SEMICLIP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -474,7 +474,7 @@
       </Command>
     </PostBuildEvent>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release.WinXP|Win32'">
@@ -485,7 +485,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>FASTCALL_PARAM_ALONE=,void*;FASTCALL_PARAM=void*,;SUBHOOK_STATIC;HAVE_STDINT_H;SEMICLIP_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <StringPooling>true</StringPooling>
       <BufferSecurityCheck>false</BufferSecurityCheck>
@@ -540,7 +540,7 @@
       </Command>
     </PostBuildEvent>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>.;..;.\;..\;$(MMS)\core\sourcehook;$(SUBHOOK);$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..;.\;..\;$(SUBHOOK);..\subhook;..\hlsdk\public;..\hlsdk\pm_shared;..\hlsdk\common;..\hlsdk\dlls;..\hlsdk\engine;..\metamod-hl1\metamod;..\amxmodx\public;..\amxmodx\public\sdk;..\Detours\src;$(DETOURS)\src;$(AMXX)\public;$(AMXX)\public\sdk;$(METAMOD)\metamod;$(HLSDK)\common;$(HLSDK)\engine;$(HLSDK)\dlls;$(HLSDK)\pm_shared;$(HLSDK)\public;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
